@@ -47,8 +47,8 @@ function agregarGasto(e) {
 
     if(!nombreGasto || !cantidad) {
         mostrarAlerta('Debes completar todos los campos', 'error');
-    } else if (presupuestoAnterior <= 0) {
-        mostrarAlerta('No tienes mas presupuesto', 'error');
+    } else if (presupuestoAnterior <= gastoObj.importe) {
+        mostrarAlerta('No tienes presupuesto suficiente', 'error');
     } else {
         mostrarAlerta('Gasto agregado', 'correcto');
         gastosLista = [...gastosLista, gastoObj];
@@ -84,7 +84,6 @@ function crearGasto() {
 
 function borrarGasto(id) {
     gastosLista = gastosLista.filter( gasto => gasto.id !== id);
-
     crearGasto();
 }
 
