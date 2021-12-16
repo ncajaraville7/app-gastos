@@ -10,13 +10,8 @@ let gasto = 0;
 
 let gastosLista = [];
 
-//EVENTOS
-
 btnAgregarPresupuesto.addEventListener('click', agregarPresupuesto);
 btnAgregarGasto.addEventListener('click', agregarGasto);
-
-
-// FUNCIONES
 
 function agregarPresupuesto(e) {
     e.preventDefault();
@@ -83,6 +78,9 @@ function crearGasto() {
 }
 
 function borrarGasto(id) {
+    const cantidadGasto = gastosLista.find(gasto => gasto.id === id);
+    presupuestoAnterior += parseInt(cantidadGasto.importe);
+    document.getElementById('total').textContent = presupuestoAnterior;
     gastosLista = gastosLista.filter( gasto => gasto.id !== id);
     crearGasto();
 }
